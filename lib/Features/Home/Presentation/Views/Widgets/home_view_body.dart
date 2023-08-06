@@ -2,13 +2,15 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:makeup_app/Core/Utils/app_router.dart';
 import 'package:makeup_app/Core/Utils/assets.dart';
 import 'package:makeup_app/Core/Utils/styles.dart';
 import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/best_seller_list_view.dart';
 import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/home_product.dart';
 import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/persistent_bottom_nav_bar.dart';
 import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/recommended_list_view.dart';
-import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/search_text_field_with_suffix.dart';
+import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/search_text_field.dart';
 import 'package:makeup_app/Features/Home/Presentation/Views/Widgets/view_all.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -25,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(height: 16,),
           CustomAppBar(),
           SizedBox(height: 22,),
-          SearchTextFieldWithSuffixIcon(),
+          SearchTextField(),
           SizedBox(height: 16,),
           SizedBox(
             height: 30,
@@ -43,17 +45,26 @@ class HomeViewBody extends StatelessWidget {
                      children: [
                        Image.asset(Assets.home1),
                        SizedBox(height: 32,),
-                       ViewAll(text: 'Best Seller'),
+                       ViewAll(text: 'Best Seller', onPressed: () {
+                         GoRouter.of(context).push(
+                           AppRouter.kBestSellerView,);
+                       },),
                        SizedBox(height: 16,),
                        BestSellerListView(),
                        SizedBox(height: 32,),
-                       ViewAll(text: 'Recommended For You'),
+                       ViewAll(text: 'Recommended For You', onPressed: () {
+                         GoRouter.of(context).push(AppRouter.kRecommendedView);
+
+                       },),
                        SizedBox(height: 16,),
                        RecommendedListView(),
                        SizedBox(height: 32,),
                        Image.asset(Assets.home1),
                        SizedBox(height: 32,),
-                       ViewAll(text: 'New Arrival'),
+                       ViewAll(text: 'New Arrival', onPressed: () {
+                         GoRouter.of(context).push(AppRouter.kNewArrivalView);
+
+                       },),
                        SizedBox(height: 16,),
                        NewArrivalListView()
 

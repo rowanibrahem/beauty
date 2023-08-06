@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import '../../../../../Core/Utils/styles.dart';
 
 class ViewAll extends StatelessWidget {
-  const ViewAll({Key? key, required this.text}) : super(key: key);
+  const ViewAll({Key? key, required this.text, required this.onPressed}) : super(key: key);
  final String text;
+ final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return
@@ -17,7 +18,8 @@ class ViewAll extends StatelessWidget {
         child: Row(children: [
           Text(text,style: Styles.textStyle20,),
           Spacer(),
-          const Text('View All',style: Styles.textStyle12,)
+          TextButton(onPressed: onPressed,
+          child: const Text('View All',style: Styles.textStyle12,))
         ],),
       );
   }

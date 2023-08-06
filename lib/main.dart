@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:makeup_app/Core/Utils/app_router.dart';
 
-import 'Features/Home/Presentation/Views/Widgets/persistent_bottom_nav_bar.dart';
-import 'Features/Home/Presentation/Views/home_view.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-
-      home: PersistentBottomNavigationBar(),
+    return  MaterialApp.router(
+     routerConfig: AppRouter.router,
+     // home: PersistentBottomNavigationBar(),
     );
   }
 }
